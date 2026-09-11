@@ -44,28 +44,29 @@ int main() {
 	cout << "\t- Discrete Structures:\t\t" << discrete_structures << "\t -\n";
 	cout << "\t- Percentage\t\t\t" << percentage << "\t -\n";
 	bool passed = (percentage_int >= 50) && (programming >= 40) && (ict_theory >= 40) && (english >= 40) && (pakistan_studies >= 40) && (discrete_structures >= 40);
-	if(passed){
+	if(passed){     
 	cout << "\t- Pass/Fail\t\t\t" << "Pass" << "\t -\n";	
 	}else{
 	cout << "\t- Pass/Fail\t\t\t" << "Fail" << "\t -\n";
 	}
 	if(percentage >= 80){
-		cout << "\t- Grade\t\t\t" << "\t\tA" << " -\n";
+		cout << "\t- Grade\t\t\t" << "\tA" << "\t -\n";
 	} else if(percentage >= 70 && percentage <= 80){
-		cout << "\t- Grade\t\t\t" << "\t\tB" << " -\n";
+		cout << "\t- Grade\t\t\t" << "\tB" << "\t -\n";
 	}  else if(percentage >= 60 && percentage <= 70){
-		cout << "\t- Grade\t\t\t" << "\t\tC" << " -\n";
+		cout << "\t- Grade\t\t\t" << "\tC" << "\t -\n";
 	} else if(percentage >= 40 && percentage <= 60){
-		cout << "\t- Grade\t\t\t" << "\t\tD" << " -\n";
+		cout << "\t- Grade\t\t\t" << "\tD" << "\t -\n";
 	}  else if(percentage < 40){
-		cout << "\t- Grade\t\t\t" << "\t\tF" << " -\n";
+		cout << "\t- Grade\t\t\t" << "\t\tF" << "\t -\n";
 	}
 	cout << "\t===========================================\n";
-    cout << "Do you want to add another? (Y/N)";
-    cin >> userChoice;
     student++;
-    cout << "Total students: " << student;
+    cout << "\tTotal students:  " << student << endl;
+    cout << "\tDo you want to add another? (Y/N)";
+    cin >> userChoice;
     } while(userChoice == "Y" || userChoice == "y");
+
     return 0;
 }
 
