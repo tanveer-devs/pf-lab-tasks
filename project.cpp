@@ -12,7 +12,6 @@ int getMarks(int marks){
 				}
 			}
 		}
-	}else{
 	}
 	return marks;
 }
