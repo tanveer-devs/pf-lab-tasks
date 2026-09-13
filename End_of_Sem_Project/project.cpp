@@ -1,6 +1,19 @@
-// loops
 #include <iostream>
 using namespace std;
+int getMarks(int marks){
+	cin >> marks;
+	if(marks > 100){
+		while(marks > 100){
+			cout << "\tMarks can't be greater that 100 \n";
+			cout << "\tEnter correct marks: ";
+			cin >> marks;
+			if(marks < 100){
+				break;
+			}
+		}
+	}
+	return marks;
+}
 int main() {
 	cout << "\t=======================================\n";
 	cout << "\t-  STUDENT RESULT & MANAGEMENT SYSTEM -\n";
@@ -12,21 +25,21 @@ int main() {
     
     int rollNo;
 	string name;
-	float programming, ict_theory, english, pakistan_studies, discrete_structures;
+	int programming, ict_theory, english, pakistan_studies, discrete_structures;
 	cout << "\tEnter Roll No: ";
 	cin >> rollNo;
 	cout << "\tEnter your name: ";
 	cin >> name;
 	cout << "\tEnter your marks in Programming: ";
-	cin >> programming;
+	programming = getMarks(programming);
 	cout << "\tEnter your marks in ICT Theory: "; 
-	cin >> ict_theory;
+	ict_theory = getMarks(ict_theory);
 	cout << "\tEnter your marks in English ";
-	cin >> english;
+	english = getMarks(english);
 	cout << "\tEnter your marks in Pakistan Studies ";
-	cin >> pakistan_studies;
+	pakistan_studies = getMarks(pakistan_studies);
 	cout << "\tEnter your marks in Discrete Structures ";
-	cin >> discrete_structures;
+	discrete_structures = getMarks(discrete_structures);
 	cout << endl;
 	float totalMarks = programming + ict_theory + english + pakistan_studies + discrete_structures;
 	float percentage = (totalMarks/500.0f) * 100;
