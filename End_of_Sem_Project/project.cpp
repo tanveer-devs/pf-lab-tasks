@@ -2,84 +2,83 @@
 using namespace std;
 int getMarks(int marks){
 	cin >> marks;
-	if(marks > 100){
 		while(marks > 100){
-			cout << "\tMarks can't be greater that 100 \n";
+			cout << "\tMarks can only be between 0-100 \n";
 			cout << "\tEnter correct marks: ";
 			cin >> marks;
-			if(marks < 100){
+			if(marks <= 100){
 				break;
 			}
 		}
-	}
 	return marks;
 }
 int main() {
-	cout << "\t=======================================\n";
-	cout << "\t-  STUDENT RESULT & MANAGEMENT SYSTEM -\n";
-	cout << "\t=======================================\n";
-	cout << "\tDeveloper: Tanveer Ahmed   Roll No: 051\n\n\n";
+	string subjectNames[5] = {"Programming", "ICT Theory", "English", "Pakistan Studies", "Discrete Structures"};
+	int subjectMarks[5] = {};
+	cout << "\t===============================================\n";
+	cout << "\t-     STUDENT RESULT & MANAGEMENT SYSTEM      -\n";
+	cout << "\t===============================================\n";
+	cout << "\tDeveloper: Tanveer Ahmed   Roll No: 051-26-0007\n\n\n";
     string userChoice;
-    int student = 0;
-    do{
-    
+    int totalStudents = 0;
+    do {
     int rollNo;
 	string name;
-	int programming, ict_theory, english, pakistan_studies, discrete_structures;
 	cout << "\tEnter Roll No: ";
 	cin >> rollNo;
 	cout << "\tEnter your name: ";
 	cin >> name;
-	cout << "\tEnter your marks in Programming: ";
-	programming = getMarks(programming);
-	cout << "\tEnter your marks in ICT Theory: "; 
-	ict_theory = getMarks(ict_theory);
-	cout << "\tEnter your marks in English ";
-	english = getMarks(english);
-	cout << "\tEnter your marks in Pakistan Studies ";
-	pakistan_studies = getMarks(pakistan_studies);
-	cout << "\tEnter your marks in Discrete Structures ";
-	discrete_structures = getMarks(discrete_structures);
-	cout << endl;
-	float totalMarks = programming + ict_theory + english + pakistan_studies + discrete_structures;
+	for(int i = 0; i < 5; i++){
+				cout << "\tEnter your marks in " << subjectNames[i] << ": ";
+				subjectMarks[i] = getMarks(subjectMarks[i]);
+		}
+
+	int totalMarks = 0;
+	for(int i = 0; i < 5; i++){
+		totalMarks += subjectMarks[i];
+	}
 	float percentage = (totalMarks/500.0f) * 100;
-	int percentage_int = static_cast<int> ((totalMarks/500.0f)*100);
-//	cout <<percentage_int << endl;
-//	cout << percentage;
 	cout << "\t==========================================\n";
 	cout << "\t- Student Name: " << name << "\t       " << "Roll: " << rollNo << " -\n";
 	cout << "\t==========================================\n";
 	cout << "\t- Subject " << "\t\t\t" << "Marks    -\t\n";
-	cout << "\t- Programming:\t\t\t" << programming << "\t -\n";
-	cout << "\t- ICT Theory:\t\t\t" << ict_theory << "\t -\n";
-	cout << "\t- English:\t\t\t" << english << "\t -\n";
-	cout << "\t- Pakistan Studies:\t\t" << pakistan_studies << "\t -\n";
-	cout << "\t- Discrete Structures:\t\t" << discrete_structures << "\t -\n";
+	cout << "\t- Programming:\t\t\t" << subjectMarks[0] << "\t -\n";
+	cout << "\t- ICT Theory:\t\t\t" << subjectMarks[1] << "\t -\n";
+	cout << "\t- English:\t\t\t" << subjectMarks[2] << "\t -\n";
+	cout << "\t- Pakistan Studies:\t\t" << subjectMarks[3] << "\t -\n";
+	cout << "\t- Discrete Structures:\t\t" << subjectMarks[4] << "\t -\n";
 	cout << "\t- Percentage\t\t\t" << percentage << "\t -\n";
-	bool passed = (percentage_int >= 50) && (programming >= 40) && (ict_theory >= 40) && (english >= 40) && (pakistan_studies >= 40) && (discrete_structures >= 40);
-	if(passed){     
+	bool areMarksGreater;
+	for(int i = 0; i < 5; i++){
+		if(subjectMarks[i] >= 40){
+			areMarksGreater = true;
+		} else{
+			areMarksGreater = false;
+			break;
+		}
+	}
+	bool isPassed = (percentage >= 50) && areMarksGreater;
+	if(isPassed){     
 	cout << "\t- Pass/Fail\t\t\t" << "Pass" << "\t -\n";	
 	}else{
 	cout << "\t- Pass/Fail\t\t\t" << "Fail" << "\t -\n";
 	}
-	if(percentage >= 80){
-		cout << "\t- Grade\t\t\t" << "\tA" << "\t -\n";
-	} else if(percentage >= 70 && percentage <= 80){
-		cout << "\t- Grade\t\t\t" << "\tB" << "\t -\n";
-	}  else if(percentage >= 60 && percentage <= 70){
-		cout << "\t- Grade\t\t\t" << "\tC" << "\t -\n";
-	} else if(percentage >= 40 && percentage <= 60){
-		cout << "\t- Grade\t\t\t" << "\tD" << "\t -\n";
-	}  else if(percentage < 40){
-		cout << "\t- Grade\t\t\t" << "\t\tF" << "\t -\n";
+	if(percentage >= 80 && isPassed){
+		cout << "\t- Grade\t\t\t" << "\tA++" << "\t -\n";
+	} else if(percentage >= 70 && isPassed){
+		cout << "\t- Grade\t\t\t" << "\tB++" << "\t -\n";
+	}  else if(percentage >= 60 && isPassed){
+		cout << "\t- Grade\t\t\t" << "\tC++" << "\t -\n";
+	} else if(percentage >= 40 && isPassed){
+		cout << "\t- Grade\t\t\t" << "\tD++" << "\t -\n";
+	}  else if(percentage < 40 || !isPassed){
+		cout << "\t- Grade\t\t\t" << "\tF" << "\t -\n";
 	}
 	cout << "\t===========================================\n";
-    student++;
-    cout << "\tTotal students:  " << student << endl;
+    totalStudents++;
+    cout << "\tTotal students:  " << totalStudents << endl;
     cout << "\tDo you want to add another? (Y/N)";
     cin >> userChoice;
     } while(userChoice == "Y" || userChoice == "y");
-
     return 0;
 }
-
