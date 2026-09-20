@@ -69,7 +69,7 @@
     
 ## Encapsulation: It means that keeping the data and operations that control that data together and restricting inappropriate direct access  
 
-## Encapsulation ka mtlb hai ke data or jo operation us data ko control krtay hain unko saath main rkhna and us data main direct ko band krna...
+// Encapsulation ka mtlb hai ke data or jo operation us data ko control krtay hain unko saath main rkhna and us data main direct ko band krna...
 
     class Student {
         private:
@@ -100,5 +100,19 @@
     setSomething();
     getSomething();
 
-## Why not make everything Public:
+## Why not make everything Public: Ham chotay or simple programs main toh sb kch pblic kar sktay hain per complext programs jese Banking system wagera jin main ek ek decimal ki bhi bht importance hoti toh usme hamay "private" krna padta hai.
 
+// E.g:
+    class Bank {
+        private:
+            double balance;
+        public: 
+            void deposit(double amount){
+                if(amount > 0){
+                    balance += amount;
+                }
+            }
+    };
+    
+## is code main ham balance for restrict krdia hai jo sirf deposit() se hi modify ho skta hai. 
+ 
